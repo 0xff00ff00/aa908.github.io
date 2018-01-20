@@ -239,6 +239,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/git-remote-permision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TonyStark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Python笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/20/git-remote-permision/" itemprop="url">git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access 'https://github.com/yourname/yourname.github.io.git/': The requested URL returned error: 403</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T23:19:50+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题-git报错"><a href="#问题-git报错" class="headerlink" title="问题:git报错"></a>问题:git报错</h3><blockquote>
+<p>remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access ‘<a href="https://github.com/yourname/yourname.github.io.git/" target="_blank" rel="noopener">https://github.com/yourname/yourname.github.io.git/</a>‘: The requested URL returned error: 403</p>
+</blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>产生这个问题的背景原因，我的电脑已经配置好一个github的账号，后来想把这个git账号下的工程push到另外一个github账号的仓库中，产生了这个错误。原因是同一台电脑配置的pubkey不能对应两个git账号。</p>
+<p>所以需要在配置另个pubkey来给新的git账号</p>
+<ol>
+<li><p>生成新的pubkey</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :cd ~/.ssh </span><br><span class="line">➜  .ssh :ssh-keygen -t rsa -C &quot;mac_yyy_pubkey&quot;</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/Users/stark/.ssh/id_rsa): id_rsa_yyy</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in id_rsa_yyy.</span><br><span class="line">Your public key has been saved in id_rsa_yyy.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:3ZcfT9kzMWyFvyHkoDG71XSJa0EvTO5VBgb5O6gjuNY mac_yyy_pubkey</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|            o=+o=|</span><br><span class="line">|         o .=*++o|</span><br><span class="line">|          = *=+O |</span><br><span class="line">|         + o.*=o*|</span><br><span class="line">|        S + oo+*=|</span><br><span class="line">|         .  ..o+=|</span><br><span class="line">|       o   .   .o|</span><br><span class="line">|      o E o      |</span><br><span class="line">|     ... . .     |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将~/.ssh/id_rsa_yyy.pub的内容，添加到git</p>
+</li>
+<li>修改配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :cd ~/.ssh</span><br><span class="line">➜  .ssh :vi config</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="将config的内容修改为以下内容"><a href="#将config的内容修改为以下内容" class="headerlink" title="将config的内容修改为以下内容"></a>将config的内容修改为以下内容</h1><blockquote>
+<p>Host github.com<br>HostName github.com<br>User git<br>IdentityFile ~/.ssh/id_rsa   </p>
+<p>Host github-yyy<br>HostName github.com<br>User git<br>IdentityFile ~/.ssh/id_rsa_yyy  </p>
+</blockquote>
+<p>4.git remote配置.将remote的链接中<code>git@github.com</code>替换为<code>github-yyy</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :git remote -v </span><br><span class="line">origin  git@github.com:......github.io.git (fetch)</span><br><span class="line">origin  git@github.com:......github.io.git (fetch)</span><br><span class="line">➜  .ssh :git remote set-url origin github-yyy:.....git</span><br><span class="line">➜  .ssh :git remote -v </span><br><span class="line">origin	github-yyy:......github.io.git (fetch)</span><br><span class="line">origin	github-yyy:......github.io.git (push)</span><br></pre></td></tr></table></figure></p>
+<p>5.done</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><code>https://www.jianshu.com/p/12badb7e6c10</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/git-fatal-refusing-to-merge-unrelated-histories/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -532,7 +672,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

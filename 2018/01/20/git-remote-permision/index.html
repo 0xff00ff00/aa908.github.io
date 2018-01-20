@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="问题：fatal: refusing to merge unrelated histories解决办法：git pull origin branchname --allow-unrelated-histories加上 --allow-unrelated-histories就可以了 说明：git pull = git fetch + git merge当进行git pull时,报出以上问题的是git">
+<meta name="description" content="问题:git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access ‘https://github.com/yourname/yourname.github.io.git/‘: The requested URL returned error: 403  解决办法产生这个问题的背景原因，我的">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="问题：fatal: refusing to merge unrelated histories">
-<meta property="og:url" content="http://yoursite.com/2018/01/20/git-fatal-refusing-to-merge-unrelated-histories/index.html">
+<meta property="og:title" content="git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;yourname&#x2F;yourname.github.io.git&#x2F;&#39;: The requested URL returned error: 403">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/git-remote-permision/index.html">
 <meta property="og:site_name" content="Python笔记">
-<meta property="og:description" content="问题：fatal: refusing to merge unrelated histories解决办法：git pull origin branchname --allow-unrelated-histories加上 --allow-unrelated-histories就可以了 说明：git pull = git fetch + git merge当进行git pull时,报出以上问题的是git">
+<meta property="og:description" content="问题:git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access ‘https://github.com/yourname/yourname.github.io.git/‘: The requested URL returned error: 403  解决办法产生这个问题的背景原因，我的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-20T14:41:54.000Z">
+<meta property="og:updated_time" content="2018-01-20T15:31:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="问题：fatal: refusing to merge unrelated histories">
-<meta name="twitter:description" content="问题：fatal: refusing to merge unrelated histories解决办法：git pull origin branchname --allow-unrelated-histories加上 --allow-unrelated-histories就可以了 说明：git pull = git fetch + git merge当进行git pull时,报出以上问题的是git">
+<meta name="twitter:title" content="git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;yourname&#x2F;yourname.github.io.git&#x2F;&#39;: The requested URL returned error: 403">
+<meta name="twitter:description" content="问题:git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access ‘https://github.com/yourname/yourname.github.io.git/‘: The requested URL returned error: 403  解决办法产生这个问题的背景原因，我的">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/20/git-fatal-refusing-to-merge-unrelated-histories/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/20/git-remote-permision/"/>
 
 
 
 
 
-  <title>问题：fatal: refusing to merge unrelated histories | Python笔记</title>
+  <title>git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access 'https://github.com/yourname/yourname.github.io.git/': The requested URL returned error: 403 | Python笔记</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/git-fatal-refusing-to-merge-unrelated-histories/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/git-remote-permision/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TonyStark">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">问题：fatal: refusing to merge unrelated histories</h1>
+          <h1 class="post-title" itemprop="name headline">git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access 'https://github.com/yourname/yourname.github.io.git/': The requested URL returned error: 403</h1>
         
 
         <div class="post-meta">
@@ -272,7 +272,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T22:37:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T23:19:50+08:00">
                 2018-01-20
               </time>
             
@@ -310,19 +310,27 @@
       
 
       
-        <h4 id="问题：fatal-refusing-to-merge-unrelated-histories"><a href="#问题：fatal-refusing-to-merge-unrelated-histories" class="headerlink" title="问题：fatal: refusing to merge unrelated histories"></a>问题：fatal: refusing to merge unrelated histories</h4><h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p><code>git pull origin branchname --allow-unrelated-histories</code><br>加上 <code>--allow-unrelated-histories</code>就可以了</p>
-<h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><p><code>git pull = git fetch + git merge</code><br>当进行<code>git pull</code>时,报出以上问题的是<code>git merge</code> 这个步骤。</p>
-<p><code>git merge</code>曾经默认允许合并两个没有共同基础的分支，但是现在已经改成默认不允许，必须加上<code>--allow-unrelated-histories</code>才会进行merge</p>
-<p>所以git pull时候加上<code>--allow-unrelated-histories</code> 就能正确运行了</p>
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><code>https://github.com/git/git/blob/master/Documentation/RelNotes/2.9.0.txt#L58-L68</code></p>
-<blockquote>
-<ul>
-<li><p>“git merge” used to allow merging two branches that have no common<br> base by default, which led to a brand new history of an existing<br> project created and then get pulled by an unsuspecting maintainer,<br> which allowed an unnecessary parallel history merged into the<br> existing project.  The command has been taught not to allow this by<br> default, with an escape hatch “–allow-unrelated-histories” option<br> to be used in a rare event that merges histories of two projects<br> that started their lives independently.</p>
-</li>
-<li><p>“git pull” has been taught to pass the “–allow-unrelated-histories”<br> option to underlying “git merge”.</p>
-</li>
-</ul>
+        <h3 id="问题-git报错"><a href="#问题-git报错" class="headerlink" title="问题:git报错"></a>问题:git报错</h3><blockquote>
+<p>remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access ‘<a href="https://github.com/yourname/yourname.github.io.git/" target="_blank" rel="noopener">https://github.com/yourname/yourname.github.io.git/</a>‘: The requested URL returned error: 403</p>
 </blockquote>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>产生这个问题的背景原因，我的电脑已经配置好一个github的账号，后来想把这个git账号下的工程push到另外一个github账号的仓库中，产生了这个错误。原因是同一台电脑配置的pubkey不能对应两个git账号。</p>
+<p>所以需要在配置另个pubkey来给新的git账号</p>
+<ol>
+<li><p>生成新的pubkey</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :cd ~/.ssh </span><br><span class="line">➜  .ssh :ssh-keygen -t rsa -C &quot;mac_yyy_pubkey&quot;</span><br><span class="line"></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/Users/stark/.ssh/id_rsa): id_rsa_yyy</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in id_rsa_yyy.</span><br><span class="line">Your public key has been saved in id_rsa_yyy.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:3ZcfT9kzMWyFvyHkoDG71XSJa0EvTO5VBgb5O6gjuNY mac_yyy_pubkey</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|            o=+o=|</span><br><span class="line">|         o .=*++o|</span><br><span class="line">|          = *=+O |</span><br><span class="line">|         + o.*=o*|</span><br><span class="line">|        S + oo+*=|</span><br><span class="line">|         .  ..o+=|</span><br><span class="line">|       o   .   .o|</span><br><span class="line">|      o E o      |</span><br><span class="line">|     ... . .     |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将~/.ssh/id_rsa_yyy.pub的内容，添加到git</p>
+</li>
+<li>修改配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :cd ~/.ssh</span><br><span class="line">➜  .ssh :vi config</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="将config的内容修改为以下内容"><a href="#将config的内容修改为以下内容" class="headerlink" title="将config的内容修改为以下内容"></a>将config的内容修改为以下内容</h1><blockquote>
+<p>Host github.com<br>HostName github.com<br>User git<br>IdentityFile ~/.ssh/id_rsa   </p>
+<p>Host github-yyy<br>HostName github.com<br>User git<br>IdentityFile ~/.ssh/id_rsa_yyy  </p>
+</blockquote>
+<p>4.git remote配置.将remote的链接中<code>git@github.com</code>替换为<code>github-yyy</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  .ssh :git remote -v </span><br><span class="line">origin  git@github.com:......github.io.git (fetch)</span><br><span class="line">origin  git@github.com:......github.io.git (fetch)</span><br><span class="line">➜  .ssh :git remote set-url origin github-yyy:.....git</span><br><span class="line">➜  .ssh :git remote -v </span><br><span class="line">origin	github-yyy:......github.io.git (fetch)</span><br><span class="line">origin	github-yyy:......github.io.git (push)</span><br></pre></td></tr></table></figure></p>
+<p>5.done</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><code>https://www.jianshu.com/p/12badb7e6c10</code></p>
 
       
     </div>
@@ -353,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/19/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/01/20/git-fatal-refusing-to-merge-unrelated-histories/" rel="next" title="问题：fatal: refusing to merge unrelated histories">
+                <i class="fa fa-chevron-left"></i> 问题：fatal: refusing to merge unrelated histories
               </a>
             
           </div>
@@ -362,10 +370,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/20/git-remote-permision/" rel="prev" title="git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access 'https://github.com/yourname/yourname.github.io.git/': The requested URL returned error: 403">
-                git报错 remote: Permission to xxx.github.io.git denied to yyy. fatal: unable to access 'https://github.com/yourname/yourname.github.io.git/': The requested URL returned error: 403 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题：fatal-refusing-to-merge-unrelated-histories"><span class="nav-number">1.</span> <span class="nav-text">问题：fatal: refusing to merge unrelated histories</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法："><span class="nav-number">2.</span> <span class="nav-text">解决办法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说明："><span class="nav-number">3.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-number">4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-git报错"><span class="nav-number">1.</span> <span class="nav-text">问题:git报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将config的内容修改为以下内容"><span class="nav-number"></span> <span class="nav-text">将config的内容修改为以下内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
